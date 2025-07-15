@@ -1,21 +1,17 @@
-
 function Clone-Repos {
     # Define the repository URLs
     $repos = @(
-        "https://github.com/DDSM-CBIS/ddss-server",
-        "https://github.com/DDSM-CBIS/ddss-electron"
+        "https://github.com/AyeletKat/ddsm-server",
+        "https://github.com/Oriya-Sigawy/ddsm-electron"
     )
     
     foreach ($repo in $repos) {
         $repoName = $repo.Split('/')[-1]
-        if (-not (Test-Path $repoName)) {
-            Write-Host "Cloning repository: $repo"
-            git clone $repo
-        } else {
-            Write-Host "Repository '$repoName' already exists. Skipping clone."
-        }
+        Write-Host "Cloning repository: $repo"
+        git clone $repo
     }
 }
+
 
 # Function to create a virtual environment
 function Create-Venv {
@@ -51,7 +47,7 @@ function Create-Venv {
 
 # Function to install Python dependencies
 function Python-Install {
-    $PythonDir = "ddss-server"  # Set your Python directory here
+    $PythonDir = "ddsm-server"  # Set your Python directory here
 
     if (Test-Path $PythonDir) {
         Write-Host "Entering Python directory: $PythonDir"
@@ -73,7 +69,7 @@ pip
 
 # Function to install JavaScript dependencies
 function Js-Install {
-    $JsDir = "ddss-electron"   # Set your JavaScript directory here
+    $JsDir = "ddsm-electron"   # Set your JavaScript directory here
 
     if (Test-Path $JsDir) {
         Write-Host "Entering JavaScript directory: $JsDir"
@@ -93,7 +89,7 @@ function Js-Install {
 
 # Function to run the Python server in a separate process
 function Python-Run {
-    $PythonDir = "ddss-server"  # Set your Python directory here
+    $PythonDir = "ddsm-server"  # Set your Python directory here
 
     if (Test-Path $PythonDir) {
         Write-Host "Entering Python directory to start server: $PythonDir"
@@ -112,7 +108,7 @@ function Python-Run {
 
 # Function to run the JavaScript client in a separate process
 function Js-Run {
-    $JsDir = "ddss-electron"   # Set your JavaScript directory here
+    $JsDir = "ddsm-electron"   # Set your JavaScript directory here
 
     if (Test-Path $JsDir) {
         Write-Host "Entering JavaScript directory to start client: $JsDir"
