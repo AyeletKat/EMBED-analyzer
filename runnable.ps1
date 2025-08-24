@@ -144,7 +144,7 @@ function Install-And-Run {
     #wait for js dependencies to finish installation
     # Wait-Process -Id $global:jsInstallPID ###############################################
 
-    Start-Sleep -Seconds 10
+    Start-Sleep -Seconds 30
     # Start the JavaScript client
     Js-Run
 
