@@ -4,11 +4,31 @@ function Clone-Repos {
         "https://github.com/AyeletKat/ddsm-server",
         "https://github.com/Oriya-Sigawy/ddsm-electron"
     )
-    
+
     foreach ($repo in $repos) {
-        $repoName = $repo.Split('/')[-1]
-        Write-Host "Cloning repository: $repo"
-        git clone $repo
+        $repoName = ($repo.Split('/')[-1]).Replace('.git','')
+
+        if (-not (Test-Path "$repoName/.git")) {
+            Write-Host "Cloning repository: $repo"
+            git clone $repo
+        } else {
+            Write-Host "Checking for updates in $repoName..."
+            Push-Location $repoName
+
+            # Fetch remote state
+            git fetch origin | Out-Null
+
+            $localCommit  = (git rev-parse HEAD).Trim()
+            $remoteCommit = (git rev-parse "origin/HEAD").Trim()
+
+            if ($localCommit -ne $remoteCommit) {
+                Write-Host "Repository $repoName is outdated. Pulling latest changes..."
+                git pull
+            } else {
+                Write-Host "Repository $repoName is up to date."
+            }
+            Pop-Location
+        }
     }
 }
 
@@ -54,13 +74,12 @@ function Python-Install {
         Set-Location -Path $PythonDir
         Write-Host "location: $(get-location)"
         Write-Host "Running pip install..."
-pip
+
         # Start pip install and capture the PID
-        $pythonInstallProcess = Start-Process pip  "install -r requierments.txt" -PassThru -NoNewWindow
+        $pythonInstallProcess = Start-Process pip "install -r requirements.txt" -PassThru -NoNewWindow
         $global:pythonInstallPID = $pythonInstallProcess.Id
         Write-Host "Python install process started with PID: $global:pythonInstallPID"
         Set-Location ..
-
     } else {
         Write-Host "Python directory not found: $PythonDir"
         exit 1
@@ -77,7 +96,7 @@ function Js-Install {
         Write-Host "Running npm install..."
 
         # Start npm install and capture the PID
-        $jsInstallProcess = Start-Process "npm.cmd" "install" -NoNewWindow -PassThru ################################
+        $jsInstallProcess = Start-Process "npm.cmd" "install" -NoNewWindow -PassThru
         $global:jsInstallPID = $jsInstallProcess.Id
         Write-Host "JavaScript install process started with PID: $global:jsInstallPID"
         Set-Location ..
@@ -116,7 +135,7 @@ function Js-Run {
         Write-Host "Starting JavaScript client..."
 
         # Start the npm dev server and capture the PID
-        $jsRunProcess = Start-Process "npm.cmd" -ArgumentList "run dev" -NoNewWindow -PassThru # added .cmd!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        $jsRunProcess = Start-Process "npm.cmd" -ArgumentList "run dev" -NoNewWindow -PassThru
         $global:jsRunPID = $jsRunProcess.Id
         Write-Host "JavaScript client started with PID: $global:jsRunPID"
     } else {
@@ -131,42 +150,35 @@ function Install-And-Run {
     Write-Host "JavaScript installation finished."
 
     Get-Location
-    # Run Python installation#########################################################changed here
+    # Run Python installation
     # Python-Install
     Get-Location
-    # wait for python install to finish
-    # Wait-Process -Id $global:pythonInstallPID #########################3 changed to #
     Write-Host "Python installation finished."
+
     # Start the Python server in a separate process
     Python-Run
 
-
-    #wait for js dependencies to finish installation
-    # Wait-Process -Id $global:jsInstallPID ###############################################
-
+    # Wait for server to be ready
     Start-Sleep -Seconds 30
+
     # Start the JavaScript client
     Js-Run
 
-    # now wait for client to stop running to kill the local server
+    # Wait for client to stop running to kill the local server
     Wait-Process -Id $global:jsRunPID
-    # Stop-Process -Id $global:pythonServerPID##############################################
 }
-
 
 # clone the repos
 Clone-Repos
 
- # Create virtual environment
+# Create virtual environment
 Create-Venv
 
-
-
- # Call the main flow
+# Call the main flow
 Install-And-Run
 
- # Show captured PIDs
- Write-Host "Python Install PID: $global:pythonInstallPID"
- Write-Host "JavaScript Install PID: $global:jsInstallPID"
- Write-Host "Python Server PID: $global:pythonServerPID"
- Write-Host "JavaScript Client PID: $global:jsRunPID"
+# Show captured PIDs
+Write-Host "Python Install PID: $global:pythonInstallPID"
+Write-Host "JavaScript Install PID: $global:jsInstallPID"
+Write-Host "Python Server PID: $global:pythonServerPID"
+Write-Host "JavaScript Client PID: $global:jsRunPID"
