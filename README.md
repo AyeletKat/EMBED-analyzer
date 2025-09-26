@@ -1,13 +1,19 @@
-# CBIS-DDSM Dataset Analyzer
+#  EMBED Open Data Analyzer
 
-This project provides a graphical user interface (GUI) for exploring the **CBIS-DDSM** (Curated Breast Imaging Subset of the Digital Database for Screening Mammography) dataset. The application is designed to allow researchers to browse, filter, and analyze mammography images and corresponding metadata without needing to write code.
-
-Due to technical limitations, we were unable to package the server (Python) and client (Electron/TypeScript) into a single executable file. As a workaround, this repository includes a script to automate the setup process by cloning the necessary repositories, installing dependencies, and running both the client and server.
+This project provides a graphical user interface (GUI) for exploring the **EMBED Open Data** (Emory Breast Imaging Dataset).  
+The application is designed to allow researchers to browse, filter, and analyze mammography images and corresponding metadata without needing to write code.  
+  
+The viewer is build from a server that works with the dataset and an Electron that makes the UI.  
+You can find the server here:  
+[server](https://github.com/AyeletKat/ddsm-server.git)  
+and the electron here:   
+[electron](https://github.com/Oriya-Sigawy/ddsm-electron.git)  
+This repository includes a script that automates the setup process by cloning the server and the electron repos, installing dependencies, and running them.  
 
 ## Features
 
 - **Interactive Filtering**: Filter patients based on metadata such as BIRADS category, breast side, abnormality type, and more.
-- **Data Viewing**: View patient mammography images along with corresponding region of interest (ROI) and mask images.
+- **Data Viewing**: View patient mammography images along with corresponding data.
 - **Query Management**: Save frequently used filters for quick access later.
 - **Server-Side Processing**: Efficiently handle large datasets with server-side filtering and image conversion.
 
@@ -16,7 +22,7 @@ Due to technical limitations, we were unable to package the server (Python) and 
 To run this project, you will need the following installed on your system:
 
 - **Git**
-- **Node.js** (for the Electron client)
+- **Node.js** (for the Electron electron)
 - **Python 3.x** (for the Flask server)
 - **Pip** (for Python dependencies)
 
@@ -27,7 +33,7 @@ To set up the project on your local machine, follow these steps:
 ### 1. Clone This Repository
 
 ```bash
-git clone https://github.com/DDSM-CBIS/ddsm-analyzer.git
+git clone https://github.com/AyeletKat/ddsm-analyzer.git
 cd <this-repo-directory>
 ```
 
@@ -69,19 +75,28 @@ cd <this-repo-directory>
 
 ### 2. Run the Script
 
-The provided script will automatically clone the server and client repositories, install all required dependencies, and start both the client and server.
-Once you downloaded the files in the repository, double click on `run.bat`.
-
+The provided script will automatically clone the server and electron repositories, install all required dependencies, and start both the electron and server.
+**windows**: *runnable.ps1* is the script for windows, run it by:
+```bash
+cd <analyzer-repo-directory>  
+.\runnable.ps1  
+```
+**Linux/mac**: *runnable.sh* is the script for Linux/mac, run it by:
+```bash
+cd <analyzer-repo-directory>
+chmod +x runnable.sh  
+./runnable.sh  
+```
 This script performs the following actions:
 
-1. Clones the [**client**](https://github.com/DDSM-CBIS/ddsm-electron) repository from GitHub.
-2. Clones the [**server**](https://github.com/DDSM-CBIS/ddsm-electron) repository from GitHub.
-3. Installs dependencies for both the client and server.
+1. Clones the [**electron**](https://github.com/Oriya-Sigawy/ddsm-electron.git) repository from GitHub. If its already cloned, its only pulls the last changes.
+2. Clones the [**server**](https://github.com/AyeletKat/ddsm-server.git) repository from GitHub. If its already cloned, its only pulls the last changes.
+3. Installs dependencies for both the electron and server.
 4. Starts the Flask server.
-5. Launches the Electron client.
+5. Launches the Electron electron.
 
 **Note**: The first run will be slower as the project install itself and its (python and js) dependencies.
 
 ### 3. Access the Application
 
-Once the script completes successfully, the program will open automatically, and you can start exploring the CBIS-DDSM dataset through the Electron-based GUI.
+Once the script completes successfully, the program will open automatically, and you can start exploring the EMBED Open Data through the Electron-based GUI.
