@@ -6,8 +6,8 @@ set -e
 # === Function to clone or update repos ===
 clone_repos() {
     repos=(
-        "https://github.com/AyeletKat/ddsm-server"
-        "https://github.com/Oriya-Sigawy/ddsm-electron"
+        "https://github.com/AyeletKat/EMBED-server.git",
+        "https://github.com/Oriya-Sigawy/EMBED-electron.git"
     )
 
     for repo in "${repos[@]}"; do
