@@ -1,8 +1,8 @@
 function Clone-Repos {
     # Define the repository URLs
     $repos = @(
-        "https://github.com/AyeletKat/ddsm-server",
-        "https://github.com/Oriya-Sigawy/ddsm-electron"
+        "https://github.com/AyeletKat/EMBED-server",
+        "https://github.com/Oriya-Sigawy/EMBED-electron"
     )
 
     foreach ($repo in $repos) {
