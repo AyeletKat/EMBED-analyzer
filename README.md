@@ -22,7 +22,7 @@ This repository includes a script that automate the setup process by cloning the
 To run this project, you will need the following installed on your system:
 
 - **Git**
-- **Node.js** (for the Electron client)
+- **Node.js** (for the Electron electron)
 - **Python 3.x** (for the Flask server)
 - **Pip** (for Python dependencies)
 
@@ -75,19 +75,28 @@ cd <this-repo-directory>
 
 ### 2. Run the Script
 
-The provided script will automatically clone the server and client repositories, install all required dependencies, and start both the client and server.
-Once you downloaded the files in the repository, double click on `run.bat`.
-
+The provided script will automatically clone the server and electron repositories, install all required dependencies, and start both the electron and server.
+**windows**: *runnable.ps1* is the script for windows, run it by:
+```bash
+cd <analyzer-repo-directory>  
+.\runnable.ps1  
+```
+**Linux/mac**: *runnable.sh* is the script for Linux/mac, run it by:
+```bash
+cd <analyzer-repo-directory>
+chmod +x runnable.sh  
+.\runnable.sh  
+```
 This script performs the following actions:
 
-1. Clones the [**client**](https://github.com/DDSM-CBIS/ddsm-electron) repository from GitHub.
-2. Clones the [**server**](https://github.com/DDSM-CBIS/ddsm-electron) repository from GitHub.
-3. Installs dependencies for both the client and server.
+1. Clones the [**electron**](https://github.com/Oriya-Sigawy/ddsm-electron.git) repository from GitHub. If its already cloned, its only pulls the last changes.
+2. Clones the [**server**](https://github.com/AyeletKat/ddsm-server.git) repository from GitHub. If its already cloned, its only pulls the last changes.
+3. Installs dependencies for both the electron and server.
 4. Starts the Flask server.
-5. Launches the Electron client.
+5. Launches the Electron electron.
 
 **Note**: The first run will be slower as the project install itself and its (python and js) dependencies.
 
 ### 3. Access the Application
 
-Once the script completes successfully, the program will open automatically, and you can start exploring the CBIS-DDSM dataset through the Electron-based GUI.
+Once the script completes successfully, the program will open automatically, and you can start exploring the EMBED Open Data through the Electron-based GUI.
