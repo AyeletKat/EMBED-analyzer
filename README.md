@@ -85,7 +85,7 @@ cd <analyzer-repo-directory>
 ```bash
 cd <analyzer-repo-directory>
 chmod +x runnable.sh  
-.\runnable.sh  
+./runnable.sh  
 ```
 This script performs the following actions:
 
