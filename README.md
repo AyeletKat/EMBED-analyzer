@@ -1,13 +1,18 @@
-# CBIS-DDSM Dataset Analyzer
+#  EMBED Open Data Analyzer
 
-This project provides a graphical user interface (GUI) for exploring the **CBIS-DDSM** (Curated Breast Imaging Subset of the Digital Database for Screening Mammography) dataset. The application is designed to allow researchers to browse, filter, and analyze mammography images and corresponding metadata without needing to write code.
+This project provides a graphical user interface (GUI) for exploring the **EMBED Open Data** (Emory Breast Imaging Dataset). The application is designed to allow researchers to browse, filter, and analyze mammography images and corresponding metadata without needing to write code.
 
-Due to technical limitations, we were unable to package the server (Python) and client (Electron/TypeScript) into a single executable file. As a workaround, this repository includes a script to automate the setup process by cloning the necessary repositories, installing dependencies, and running both the client and server.
+The viewer is build from a server that work with the dataset and an Electron that makes the UI.  
+You can find the server here:  
+[server](https://github.com/AyeletKat/ddsm-server.git)  
+and the electron here: 
+https://github.com/Oriya-Sigawy/ddsm-electron.git
+This repository includes a script that automate the setup process by cloning the server and the electron repos, installing dependencies, and running them.
 
 ## Features
 
 - **Interactive Filtering**: Filter patients based on metadata such as BIRADS category, breast side, abnormality type, and more.
-- **Data Viewing**: View patient mammography images along with corresponding region of interest (ROI) and mask images.
+- **Data Viewing**: View patient mammography images along with corresponding data.
 - **Query Management**: Save frequently used filters for quick access later.
 - **Server-Side Processing**: Efficiently handle large datasets with server-side filtering and image conversion.
 
@@ -27,7 +32,7 @@ To set up the project on your local machine, follow these steps:
 ### 1. Clone This Repository
 
 ```bash
-git clone https://github.com/DDSM-CBIS/ddsm-analyzer.git
+git clone https://github.com/AyeletKat/ddsm-analyzer.git
 cd <this-repo-directory>
 ```
 
