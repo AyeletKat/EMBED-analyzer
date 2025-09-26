@@ -1,13 +1,14 @@
 #  EMBED Open Data Analyzer
 
-This project provides a graphical user interface (GUI) for exploring the **EMBED Open Data** (Emory Breast Imaging Dataset). The application is designed to allow researchers to browse, filter, and analyze mammography images and corresponding metadata without needing to write code.
-
+This project provides a graphical user interface (GUI) for exploring the **EMBED Open Data** (Emory Breast Imaging Dataset).  
+The application is designed to allow researchers to browse, filter, and analyze mammography images and corresponding metadata without needing to write code.  
+  
 The viewer is build from a server that work with the dataset and an Electron that makes the UI.  
 You can find the server here:  
 [server](https://github.com/AyeletKat/ddsm-server.git)  
-and the electron here: 
-https://github.com/Oriya-Sigawy/ddsm-electron.git
-This repository includes a script that automate the setup process by cloning the server and the electron repos, installing dependencies, and running them.
+and the electron here:   
+[electron](https://github.com/Oriya-Sigawy/ddsm-electron.git)  
+This repository includes a script that automate the setup process by cloning the server and the electron repos, installing dependencies, and running them.  
 
 ## Features
 
