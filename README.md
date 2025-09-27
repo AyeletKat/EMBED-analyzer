@@ -17,8 +17,15 @@ This repository includes a script that automates the setup process by cloning th
 - **Query Management**: Save frequently used filters for quick access later.
 - **Server-Side Processing**: Efficiently handle large datasets with server-side filtering and image conversion.
 
-This is how the viewer looks like:
-![alt text](https://github.com/AyeletKat/EMBED-analyzer/blob/main/pictures/full_screen.png)
+This is how the viewer looks like:   
+
+![alt text](https://github.com/AyeletKat/EMBED-analyzer/blob/main/pictures/full_screen.png)  
+
+Each filter fields has its options:    
+![alt text](https://github.com/AyeletKat/EMBED-analyzer/blob/main/pictures/full_with_options.png)  
+
+When you click on "Image X" the details of the image appears:  
+![alt text](https://github.com/AyeletKat/EMBED-analyzer/blob/main/pictures/image.png)     
 
 ## Requirements
 
