@@ -21,10 +21,12 @@ This is how the viewer looks like:
 
 ![alt text](https://github.com/AyeletKat/EMBED-analyzer/blob/main/pictures/full_screen.png)  
 
-Each filter fields has its options:    
+Each filter fields has its options:  
+
 ![alt text](https://github.com/AyeletKat/EMBED-analyzer/blob/main/pictures/full_with_options.png)  
 
 When you click on "Image X" the details of the image appears:  
+
 ![alt text](https://github.com/AyeletKat/EMBED-analyzer/blob/main/pictures/image.png)     
 
 ## Requirements
