@@ -115,7 +115,7 @@ Once the script completes successfully, the program will open automatically, and
 
 
 
-### Important!
+## Important!
 
 The "data" folder in the server and the aws s3 credentials in "s3_keys.txt" in the server are empty.
 
